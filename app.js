@@ -110,15 +110,19 @@ function updateDom(data) {
         //Container div:
         const containerDiv = document.createElement("div"); 
         containerDiv.textContent = ""; 
+        containerDiv.className = "containerDiv"
         //Chord name div: 
         const newDiv1 = document.createElement("div"); 
         newDiv1.textContent = `Name: ${returnedNote}${chordValue[i]}`;
+        newDiv1.className = "name"; 
         //Notes div: 
         const newDiv2 = document.createElement("div");  
         newDiv2.textContent = `Notes: ${notesString}`;
+        newDiv2.className = "notes"; 
         //Numbers div: 
         const newDiv3 = document.createElement("div"); 
         newDiv3.textContent = `Intervals: ${numberString}`; 
+        newDiv3.className = "intervals";
         //Appending: 
         const grandParentDiv = document.querySelector(".container"); 
         grandParentDiv.appendChild(containerDiv); 
