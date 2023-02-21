@@ -17,63 +17,69 @@ function fetchData(note) {
     fetch(`https://piano-chords.p.rapidapi.com/chords/${note}`, options)
         .then(response => response.json())
         .then((response) => {
+            //musicData is now storing the response:
             musicData = response
-            console.log(musicData); 
+            console.log(musicData);
+            //Calling the updateDom() function and plugging in musicData as the argument 
             updateDom(musicData)
         })
         .catch(err => console.error(err));
 }
 
 
-//event listener to button: 
+
+//Selects the button element and stores it to the getChord variable:
 const getChord = document.querySelector("#search-btn"); 
+//Adds an event listener to the button/getChord:
 getChord.addEventListener("click", function (event) {
     event.preventDefault();
+    //Selects the text input value and stores it to the searchChord variable:
     let searchChord = document.querySelector("#chord-search").value;
+    //Calls the fetchData() function with searchChord as the argument:
+    //searchChord will be the /${note} of the fetch in the fetchData() function
     fetchData(searchChord.toLowerCase());
-    console.log(searchChord);
-    
+    // console.log(searchChord); 
 });
 
-
-/*
-//variables for chord object properties: 
-const chordName = document.getElementById("name"); 
-const notes = document.getElementById("notes");
-const intervals = document.getElementById("intervals");
-*/
 
 
 //Update DOM function:
 function updateDom(data) {
     console.log(data); 
-    console.log(Object.keys(data));
     //this is the generic code for calling the chord name
-    //declaring a const variable: cannot be redeclared or re-assigned
-    //now returnedNote is assigned to the value that Object.keys(data)[0] is returning
+    //returns an array of the data's keys (Which in this case is a list of chord names['C', 'D', 'E', 'F', etc])
+    console.log(Object.keys(data));
+    
+    //returns a string of the key that has been passed (ie: C); 
     const returnedNote = Object.keys(data)[0]; 
-
     console.log(returnedNote);
    
     //data[returnedNote] is the same as data['A'] -assuming A is being passed in
     //it returns the value of the key ie:'A' -objects of the data object, which are "A" values
     console.log(data[returnedNote]);
-    console.log(data[returnedNote]['5']);
-
-    //This line is showing the array of notes, held by the object at the key named "5"
+    
+    //This log shows the array of notes, held by the object at the key named "5"
     console.log(data[returnedNote]['5'].notes);
-    console.log(Object.keys(data[returnedNote]));
-    
+
+    //The log below is showing the array of the 'second layer' of keys,
+    // which allows us to iterate over the chord values (ie: dim, maj, min, etc)
     const chordValue = Object.keys(data[returnedNote]); 
+    console.log(chordValue);
     
+    //This for loop iterates through the length of chordValue
     for (let i = 0; i < chordValue.length; i++) {
         console.log(chordValue[i]);
         
         //Notes array iteration:
+        //The variable below stores the calling of the individual chord notes
+        //We're calling chordValue[i] because we're able to get the iteration of every chord's individual notes
         const noteValues = data[returnedNote][chordValue[i]].notes; 
+        console.log(noteValues);
+        //Creating a variable with an empty string to store the iteration of noteValues: 
         let notesString = ''; 
         for (let j = 0; j < noteValues.length; j++) {
             
+            //this conditional removes the comma from the end of the notes list
             if(j == noteValues.length - 1){
                 notesString += `${noteValues[j]}`;
             } else {
@@ -84,10 +90,14 @@ function updateDom(data) {
         }
 
         //Numbers array iteration:
+        //The variable below stores the access of the individual chord numbers
+        //We're calling chordValue[i] because we're able to get the iteration of every chord's individual numbers
         const numberValues = data[returnedNote][chordValue[i]].intervals; 
+        //Creating a variable with an empty string to store the iteration of numberValues:
         let numberString = ''; 
         for (let k = 0; k < numberValues.length; k++) {
             
+            //this conditional removes the comma from the end of the notes list
             if(k == numberValues.length - 1){
                 numberString += `${numberValues[k]}`;
             } else {
@@ -115,7 +125,7 @@ function updateDom(data) {
         containerDiv.append(newDiv1, newDiv2, newDiv3); 
 
     }
-    console.log(data);
+    // console.log(data);
     
 }
 
