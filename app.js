@@ -66,6 +66,14 @@ function updateDom(data) {
     const chordValue = Object.keys(data[returnedNote]); 
     console.log(chordValue);
     
+
+    const parentContainer = document.createElement("div");
+    parentContainer.textContent = ""; 
+    parentContainer.className = "parentContainer"; 
+        
+    const grandParentDiv = document.querySelector(".container"); 
+    grandParentDiv.appendChild(parentContainer); 
+
     //This for loop iterates through the length of chordValue
     for (let i = 0; i < chordValue.length; i++) {
         console.log(chordValue[i]);
@@ -107,6 +115,8 @@ function updateDom(data) {
             // console.log(numberString);
         }
 
+        //Parent Container div:
+        
         //Container div:
         const containerDiv = document.createElement("div"); 
         containerDiv.textContent = ""; 
@@ -124,12 +134,12 @@ function updateDom(data) {
         newDiv3.textContent = `Intervals: ${numberString}`; 
         newDiv3.className = "intervals";
         //Appending: 
-        const grandParentDiv = document.querySelector(".container"); 
-        grandParentDiv.appendChild(containerDiv); 
+        parentContainer.appendChild(containerDiv); 
         containerDiv.append(newDiv1, newDiv2, newDiv3); 
-
+        
     }
     // console.log(data);
+    
     
 }
 

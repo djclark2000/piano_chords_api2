@@ -1,3 +1,8 @@
+*{
+  box-sizing: border-box;
+  
+}
+
 .search {
     text-align: center;
 }
@@ -6,7 +11,8 @@
     outline: none;
     padding: 0.5em 2em;
     border-radius: 30px;
-    background: #ffd5ff;
+    border: 2px solid #b847b8;
+    background: #ffeaff;
     color: black;
     font-family: inherit;
     font-size: 120%; 
@@ -33,33 +39,44 @@
     text-decoration: none;
     cursor: pointer;
     /* box-shadow: 5px 5px 5px #431443; */
-  }
+}
   
-  .btn:hover {
-    background: #db4bdb;
-    background-image: -webkit-linear-gradient(top, #db4bdb, #cc46cc);
-    background-image: -moz-linear-gradient(top, #db4bdb, #cc46cc);
-    background-image: -ms-linear-gradient(top, #db4bdb, #cc46cc);
-    background-image: -o-linear-gradient(top, #db4bdb, #cc46cc);
-    background-image: linear-gradient(to bottom, #db4bdb, #cc46cc);
-    text-decoration: none;
-  }
+.btn:hover {
+  background: #db4bdb;
+  background-image: -webkit-linear-gradient(top, #db4bdb, #cc46cc);
+  background-image: -moz-linear-gradient(top, #db4bdb, #cc46cc);
+  background-image: -ms-linear-gradient(top, #db4bdb, #cc46cc);
+  background-image: -o-linear-gradient(top, #db4bdb, #cc46cc);
+  background-image: linear-gradient(to bottom, #db4bdb, #cc46cc);
+  text-decoration: none;
+}
 
-  .containerDiv {
-    background-color:  #b847b8;
-    border-radius: 28px;
-    box-shadow: 10px 5px 5px #431443;
-    color: #ffffff;
-    padding: 30px;
-    margin: 20px;
-    text-align: center;
-  }
+.parentContainer { 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* background-color: rgb(0, 128, 58); */
+}
 
-  .name, .notes {
-    padding-bottom: 10px;
-    font-size: 18px;
-  }
+.containerDiv {
+  background-color: #47B847;
+  /* border: 2px solid #b847b8; */
+  border-radius: 10px;
+  box-shadow: 7px 5px 5px #686868;
+  color: #ffffff;
+  padding: 30px;
+  margin: 20px;
+  width: 300px;
+  text-align: center;
+  
+}
 
-  .intervals {
-    font-size: 18px;
-  }
+.name, .notes {
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.intervals {
+  font-size: 18px;
+}
